@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcfxnfeafcpkc"]
+
+[ext_resource type="PackedScene" uid="uid://bgjtdsjidr1k1" path="res://scenes/player.tscn" id="1_xmry8"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ol3ik"]
+size = Vector2(1000, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jout"]
+size = Vector2(1000, 150)
+
+[node name="BaseGame" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="CanvasLayer"]
+offset_left = -16.0
+offset_top = -12.0
+offset_right = 1168.0
+offset_bottom = 662.0
+color = Color(0.762404, 0.762404, 0.762404, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_xmry8")]
+position = Vector2(554, 321)
+speed = 2000
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(568, 534)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
+modulate = Color(0.5457, 0.800868, 0.740892, 1)
+mesh = SubResource("QuadMesh_ol3ik")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+shape = SubResource("RectangleShape2D_7jout")
